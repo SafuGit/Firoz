@@ -9,14 +9,15 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
+  <header class="mb-10">
     <div class="navbar bg-base-100">
       <div class="navbar-start">
-      </div>
-      <div class="navbar-center">
         <a class="btn btn-ghost text-2xl" href="./index.html">Saf1 Answers</a>
       </div>
+      <div class="navbar-center">
+      </div>
       <div class="navbar-end">
+        <button class="btn btn-accent">Create Answer</button>
       </div>
     </div>
   </header>
@@ -44,6 +45,7 @@
         "https://javaspringboot-production-58bb.up.railway.app/subjects"
       ) .then((response) => response.json())
         .then((result) => {
+          console.log(process.env.GEMINI_API_KEY)
           subjects = result;
           console.log(subjects);
           const data = {
