@@ -22,15 +22,9 @@
     </div>
   </header>
 
-  <!-- <main>
-    <ul class="menu menu-lg bg-base-200 rounded-box w-[90%] md:w-[75%] lg:w-[65%] mx-auto">
-      <div class="divider"></div>
-      <li><a>lg item 1</a></li>
-      <div class="divider"></div>
-      <li><a>lg item 2</a></li>
-      <div class="divider"></div>
-    </ul>
-  </main> -->
+  <main>
+
+  </main>
 
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
 
@@ -54,23 +48,50 @@
           const html = template(data);
     
           document.body.insertAdjacentHTML("beforeend", html);
-        })
+
+          const form = document.getElementById('answer-form');
+        form.addEventListener('submit', function(event) {
+          event.preventDefault(); // Prevent default form submission
+
+          // Get form values
+          const formData = new FormData(form);
+          const formObject = Object.fromEntries(formData.entries());
+
+          console.log("Form Submitted:", formObject);
+        });
+      })
     });
   </script>
 
   <script id="entry-template" type="text/x-handlebars-template">
-    <ul class="menu menu-lg bg-base-200 rounded-box w-[90%] md:w-[75%] lg:w-[65%] mx-auto">
-      <h1 class="text-center text-xl font-bold text-white mt-4">Subjects</h1>
-      <div class="divider"></div>
-      {{#each subjects }}
-        <li><a>{{name}}</a></li>
-        <div class="divider"></div>
-      {{/each}}
-      <!-- <li><a>lg item 1</a></li>
-      <div class="divider"></div>
-      <li><a>lg item 2</a></li>
-      <div class="divider"></div> -->
-    </ul>
+    <form id="answer-form" class="w-[80%] mx-auto">
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Title</span>
+        </label>
+        <input type="text" name="title" class="input input-bordered">
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Question</span>
+        </label>
+        <textarea name="question" class="textarea textarea-bordered h-24" placeholder="Type your question here..."></textarea>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Subject</span>
+        </label>
+        <select name="subjectId" class="select select-bordered">
+          <option>Select Subject</option>
+          {{#each subjects }}
+            <option value={{id}}>{{name}}</option>
+          {{/each}}
+        </select>
+      </div>
+      <div class="buttons mt-4">
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button class="btn btn-error">Reset</button>
+      </div>
+    </form>
   </script>
 </body>
-</html>
