@@ -45,7 +45,6 @@
         "https://javaspringboot-production-58bb.up.railway.app/subjects"
       ) .then((response) => response.json())
         .then((result) => {
-          console.log(process.env.GEMINI_API_KEY)
           subjects = result;
           console.log(subjects);
           const data = {
