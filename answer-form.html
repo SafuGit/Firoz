@@ -36,7 +36,7 @@
 
       let subjects;
       fetch(
-        "https://javaspringboot-production-58bb.up.railway.app/subjects"
+        "https://saf1-answers-api.onrender.com/subjects"
       ) .then((response) => response.json())
         .then((result) => {
           subjects = result;
@@ -58,6 +58,24 @@
           const formObject = Object.fromEntries(formData.entries());
 
           console.log("Form Submitted:", formObject);
+          fetch(`/.netlify/functions/apiCall?text=${formObject.question}&name=Safwan`, {
+            method : 'GET',
+          })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+            return response.json();
+          })
+          .then((data) => {
+            message = data["response"]
+            aiData = data["aiData"]
+            console.log(data);
+            format(errorText, message, aiData); 
+          })
+          .catch((error) => {
+            console.error('There was an error with the fetch operation:', error); 
+          });
         });
       })
     });
