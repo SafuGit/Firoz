@@ -81,6 +81,12 @@
             formData.append('response', message);
             const formObject2 = Object.fromEntries(formData.entries());
             console.log(JSON.stringify(formObject2));
+
+            const loading = document.querySelector('.loading');
+            loading.style.display = 'block';
+
+            const form2 = document.getElementById('answer-form');
+            form2.style.display = 'none';
             fetch('https://saf1-answers-api.onrender.com/answers', {
               method : "POST",
               headers: {
@@ -96,6 +102,12 @@
             }).then((data) => {
               console.log(data);
               console.log("Answer Saved");
+
+            const loading = document.querySelector('.loading');
+            loading.style.display = 'none';
+
+            const form2 = document.getElementById('answer-form');
+            form2.style.display = 'block';
             })
           })
           .catch((error) => {
