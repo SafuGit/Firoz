@@ -79,12 +79,13 @@
             answerTextarea.style.display = 'block';
 
             formData.append('response', message);
+            const formObject2 = Object.fromEntries(formData.entries());
             fetch('https://saf1-answers-api.onrender.com/answers', {
               method : "POST",
               headers: {
                 'Content-Type': 'application/json',
               },
-              body: JSON.stringify(formObject)
+              body: JSON.stringify(formObject2)
             }).then((response) => {
               if (!response.ok) {
                 throw new Error('Network response was not ok');
