@@ -71,7 +71,9 @@
             message = data["response"]
             aiData = data["aiData"]
             console.log(data);
-            format(errorText, message, aiData); 
+            const answerTextarea = document.getElementById('answer-textarea');
+            answerTextarea.value = message;
+            answerTextarea.style.display = 'block';
           })
           .catch((error) => {
             console.error('There was an error with the fetch operation:', error); 
@@ -105,6 +107,12 @@
             <option value={{id}}>{{name}}</option>
           {{/each}}
         </select>
+        <div class="form-control" id="answer-textarea" style="display: none;">
+          <label class="label">
+            <span class="label-text">Answer</span>
+          </label>
+          <textarea name="question" class="textarea textarea-bordered h-50" placeholder="AI Answer here..." disabled></textarea>
+        </div>
       </div>
       <div class="buttons mt-4">
         <button type="submit" class="btn btn-primary">Submit</button>
