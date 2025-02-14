@@ -50,7 +50,7 @@
           document.body.insertAdjacentHTML("beforeend", html);
 
           const form = document.getElementById('answer-form');
-        form.addEventListener('submit', function(event) {
+          form.addEventListener('submit', function(event) {
           event.preventDefault(); // Prevent default form submission
 
           // Get form values
@@ -107,12 +107,12 @@
             <option value={{id}}>{{name}}</option>
           {{/each}}
         </select>
-        <div class="form-control" id="answer-textarea" style="display: none;">
-          <label class="label">
-            <span class="label-text">Answer</span>
-          </label>
-          <textarea name="question" class="textarea textarea-bordered h-50" placeholder="AI Answer here..." disabled></textarea>
-        </div>
+      </div>
+      <div class="form-control">
+        <label class="label">
+          <span class="label-text">Answer</span>
+        </label>
+        <textarea name="answer" id="answer-textarea" class="textarea textarea-bordered h-50" placeholder="AI Answer here..." style="display: none;" disabled></textarea>
       </div>
       <div class="buttons mt-4">
         <button type="submit" class="btn btn-primary">Submit</button>
