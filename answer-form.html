@@ -80,6 +80,7 @@
 
             formData.append('response', message);
             const formObject2 = Object.fromEntries(formData.entries());
+            console.log(JSON.stringify(formObject2));
             fetch('https://saf1-answers-api.onrender.com/answers', {
               method : "POST",
               headers: {
@@ -90,6 +91,7 @@
               if (!response.ok) {
                 throw new Error('Network response was not ok');
               }
+              console.log(response)
               return response.json();
             }).then((data) => {
               console.log(data);
