@@ -12,7 +12,7 @@ exports.handler = async function (event, context) {
         const requestBody = JSON.stringify({
             "contents": [{
                 "parts": [{
-                    "text": `Answer the following question, ${text} make sure this uses the system of the Class/Grade 8 of Bangladesh. You dont have to type the Class/Grade, make sure to start your answer with 'Heres your answer {name}', Here name = ${userName}`
+                    "text": `Answer the following question, ${text} make sure this uses the system of the Class/Grade 8 of Bangladesh. You dont have to type the Class/Grade.`
                 }]
             }]
         });
