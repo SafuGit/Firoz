@@ -22,6 +22,10 @@
     </div>
   </header>
 
+  <main>
+    <span class="loading loading-spinner loading-lg mx-auto" style="display: block;"></span>
+  </main>
+
   <!-- <main>
     <ul class="menu menu-lg bg-base-200 rounded-box w-[90%] md:w-[75%] lg:w-[65%] mx-auto">
       <div class="divider"></div>
@@ -54,6 +58,9 @@
           const html = template(data);
     
           document.body.insertAdjacentHTML("beforeend", html);
+
+          const loading = document.querySelector('.loading');
+          loading.style.display = 'none';
         })
     });
   </script>

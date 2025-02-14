@@ -23,7 +23,7 @@
   </header>
 
   <main>
-
+    <span class="loading loading-spinner loading-lg mx-auto" style="display: block;"></span>
   </main>
 
   <script src="https://cdn.jsdelivr.net/npm/handlebars@latest/dist/handlebars.js"></script>
@@ -48,6 +48,9 @@
           const html = template(data);
     
           document.body.insertAdjacentHTML("beforeend", html);
+
+          const loading = document.querySelector('.loading');
+          loading.style.display = 'none';
 
           const form = document.getElementById('answer-form');
         form.addEventListener('submit', function(event) {
